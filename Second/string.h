@@ -8,6 +8,7 @@ private:
 	char* p;
 	unsigned short cap;
 	unsigned short count = 0;
+	unsigned старт[3];
 	void alloc(unsigned);
 public:
 	String();
@@ -20,7 +21,8 @@ public:
 	unsigned short getcap() const;
 	int push_back(char);
 	char getchar(unsigned) const;
-	bool find(char*, int) const;
 	void clear();
+	void setстарт(unsigned, unsigned, unsigned);
+	unsigned getстарт(int) const;
 };
 #endif

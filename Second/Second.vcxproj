@@ -126,12 +126,14 @@
     <ClInclude Include="block.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="logic.h" />
+    <ClInclude Include="Result.h" />
     <ClInclude Include="string.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="block.cpp" />
     <ClCompile Include="logic.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="result.cpp" />
     <ClCompile Include="string.cpp" />
   </ItemGroup>
   <ItemGroup>

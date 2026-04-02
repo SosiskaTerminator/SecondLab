@@ -63,9 +63,19 @@ int String::push_back(char c) {
 }
 
 char String::getchar(unsigned n) const {
-	if (p != nullptr && n >= 0 && n < cap) return *(p + n);
+	if (p != nullptr && n < cap) return *(p + n);
 	else if (p != nullptr) { std::cout << "Выход за границы." << std::endl; return '\0'; }
 	else { std::cout << "Массив не инициализирован" << std::endl; return '\0'; }
+}
+
+void String::setстарт(unsigned n, unsigned q, unsigned w) {
+	старт[0] = n;
+	старт[1] = q;
+	старт[2] = w;
+}
+
+unsigned String::getстарт(int n) const {
+	return старт[n];
 }
 
 void String::alloc(unsigned n) {
@@ -83,20 +93,6 @@ void String::alloc(unsigned n) {
 
 	delete[] p;
 	p = tmp;
-}
-
-bool String::find(char* s, int size) const {
-	int j = 0;
-
-	for (int i = 0; i < count; i++) {
-		char a = p[i], b = s[j];
-
-		if (p[i] == s[j]) j++;
-		else if (p[i] != s[j]) { i -= j; j = 0; }
-		if (j == size) return true;
-	}
-
-	return false;
 }
 
 void String::clear() {

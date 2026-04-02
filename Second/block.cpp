@@ -33,8 +33,8 @@ std::ostream& operator<<(std::ostream& os, Block& ex) {
 }
 
 String Block::getstring(unsigned n) const {
-	if (p == nullptr) { std::cout << "Массив пуст" << std::endl; return NULL; }
-	else if (n < 0 || n > count) { std::cout << "Выход за пределы массива" << std::endl; return NULL; }
+	if (p == nullptr) { std::cout << "Массив пуст" << std::endl; return String(); }
+	else if (n < 0 || n > count) { std::cout << "Выход за пределы массива" << std::endl; return String(); }
 	else return p[n];
 }
 
