@@ -1,5 +1,6 @@
 #pragma once
 #define Result_H
+#include<iostream>
 
 struct Result
 {
@@ -9,4 +10,5 @@ struct Result
 	unsigned short count = 0;
 	void alloc(unsigned);
 	bool find(int);
+	friend std::ostream& operator<<(std::ostream&, Result&);
 };

@@ -31,3 +31,11 @@ bool Result::find(int n) {
 
 	return false;
 }
+
+std::ostream& operator<<(std::ostream& os, Result& r) {
+	for (int i = 0; i < r.count; i++) {
+		os << r.pA[i] << '\n';
+	}
+	
+	return os;
+}

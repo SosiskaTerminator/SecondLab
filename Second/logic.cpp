@@ -42,7 +42,16 @@ void process(Block* bl, unsigned arr[size_of_block], fstream& f, Result res) {
 		}
 
 		if (был_конец) {
+			char c = '\0';
+			while (true) {
+				f >> c;
 
+				if (f.eof() || (cnt != 5 && c != ' ')) return;
+
+				if (cnt != 5 && c == ' ') cnt++;
+				else if (cnt == 5 && is_capitaly(c)) res.push_back(size_of_block * s.getстарт(2) + find(arr, s.getстарт(0)));
+				else return;
+			}
 		}
 	}
 }
@@ -56,7 +65,7 @@ void skip_to_n(fstream* file) {
 	}
 }
 
-void readfile() {
+Result readfile() {
 	fstream file("text.txt", ios::in);
 	if (!file.is_open()) { std::cout << "Ошибка отрытия файла." << endl; return; }
 	file.unsetf(std::ios::skipws);
@@ -105,6 +114,7 @@ void readfile() {
 		} while (flag != -1);
 		if (!bl->getcount()) goto выход;
 		process(bl, arr, file, res);
+		file.clear();
 		std::cout << *bl << endl;
 		for (int j = 0; j < i; j++) {
 			if (arr[j] == -1) break;
@@ -124,4 +134,6 @@ void readfile() {
 		bl = new Block;
 		номер_блочного_считывания++;
 	}
+
+	return res;
 }

@@ -1,4 +1,5 @@
 #pragma once
 #include"block.h"
+#include"Result.h"
 
-void readfile();
+Result readfile();
