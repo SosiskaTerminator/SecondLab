@@ -21,5 +21,6 @@ public:
 	void setcap(int);
 	int push_back(String&);
 	void clear();
+	bool check();
 };
 #endif

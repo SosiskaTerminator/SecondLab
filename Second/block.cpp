@@ -75,3 +75,14 @@ unsigned short Block::getcap() const {
 unsigned short Block::getcount() const {
 	return count;
 }
+
+bool Block::check() {
+	int cnt = 0;
+	String s;
+
+	for (int i = 0; i < count; i++) {
+		if (p[i] == s) cnt++;
+	}
+
+	return (cnt == count) ? false : true;
+}

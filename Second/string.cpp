@@ -39,10 +39,31 @@ String& String::operator=(const String& other) {
 	return *this;
 }
 
+bool String::operator==(const String& other) {
+	if (cap == other.cap) {
+		if (count == other.count) {
+			for (int i = 0; i < count; i++) {
+				if (p[i] != other.p[i]) return false;
+			}
+			return true;
+		}
+		else return false;
+	}
+	else return false;
+}
+
 void String::setcap(int n) {
 	if (n < 0) { cap = 0; std::cout << "Значение меньше нуля. Объем выставлен 0." << std::endl; }
 	if (n > length_of_string) { cap = length_of_string; std::cout << "Значение больше разрешённого. Объем выставлен максимально разрешённым." << std::endl; }
 	else cap = n;
+}
+
+void String::setend(bool fl) {
+	был_конец_строки = fl;
+}
+
+bool String::getend() const {
+	return был_конец_строки;
 }
 
 unsigned short String::getcount() const {
