@@ -1,82 +1,55 @@
-#include "string.h"
+#include "String.h"
 #include "constants.h"
 #include<iostream>
 
 String::String() {
-	cap = 1;
-	p = new char[1];
+	//cap = 1;
+	//p = new char[1];
 }
 
-String::String(int n) {
-	setcap(n);
-	p = new char[cap];
-}
-
-String::~String() {
-	if (p != nullptr) delete[] p;
-	p = nullptr;
-	cap = 0;
-	count = 0;
-}
+//String::~String() {
+//	if (p != nullptr) delete[] p;
+//	p = nullptr;
+//	cap = 0;
+//	count = 0;
+//}
 
 std::ostream& operator<<(std::ostream& os, const String& p) {
 	os << "String{массив: #";
 	for (int i = 0; i < p.count; i++) {
 		os << p.p[i];
 	}
-	os << "#, обьем: " << p.cap << ", кол-во элементов: " << p.count << "}";
+	os << "#, кол-во элементов: " << p.count << "}";
 	return os;
 }
 
-String& String::operator=(const String& other) {
-	if (this != &other) {
-		delete[] p;
-		count = other.count;
-		cap = other.cap;
-		p = new char[cap];
-		for (int i = 0; i < count; i++) p[i] = other.p[i];
-	}
-	return *this;
-}
-
 bool String::operator==(const String& other) {
-	if (cap == other.cap) {
-		if (count == other.count) {
-			for (int i = 0; i < count; i++) {
-				if (p[i] != other.p[i]) return false;
-			}
-			return true;
+	if (count == other.count) {
+		for (int i = 0; i < count; i++) {
+			if (p[i] != other.p[i]) return false;
 		}
-		else return false;
+		return true;
 	}
 	else return false;
 }
 
-void String::setcap(int n) {
-	if (n < 0) { cap = 0; std::cout << "Значение меньше нуля. Объем выставлен 0." << std::endl; }
-	if (n > length_of_string) { cap = length_of_string; std::cout << "Значение больше разрешённого. Объем выставлен максимально разрешённым." << std::endl; }
-	else cap = n;
-}
-
-void String::setend(bool fl) {
-	был_конец_строки = fl;
-}
-
-bool String::getend() const {
-	return был_конец_строки;
-}
+//void String::setcap(int n) {
+//	if (n < 0) { cap = 0; std::cout << "Значение меньше нуля. Объем выставлен 0." << std::endl; }
+//	if (n > length_of_string) { cap = length_of_string; std::cout << "Значение больше разрешённого. Объем выставлен максимально разрешённым." << std::endl; }
+//	else cap = n;
+//}
 
 unsigned short String::getcount() const {
 	return count;
 }
 
-unsigned short String::getcap() const {
-	return cap;
-}
+//unsigned short String::getcap() const {
+//	return cap;
+//}
 
 int String::push_back(char c) {
 	if (count >= length_of_string) return -1;
-	alloc(1);
+	//alloc(1);
 	p[count] = c;
 	count++;
 
@@ -84,27 +57,27 @@ int String::push_back(char c) {
 }
 
 char String::getchar(unsigned n) const {
-	if (p != nullptr && n >= 0 && n < cap) return *(p + n);
-	else if (p != nullptr) { std::cout << "Выход за границы." << std::endl; return '\0'; }
+	if (count != 0 && n < length_of_string) return p[n];
+	else if (count != 0) { std::cout << "Выход за границы." << std::endl; return '\0'; }
 	else { std::cout << "Массив не инициализирован" << std::endl; return '\0'; }
 }
 
-void String::alloc(unsigned n) {
-	if (cap >= count + n) return;
-
-	while (cap < count + n) {
-		if (!cap) cap = 1;
-		else cap *= 2;
-	}
-
-	char* tmp = new char[cap];
-	for (int i = 0; i < count; i++) {
-		*(tmp + i) = *(p + i);
-	}
-
-	delete[] p;
-	p = tmp;
-}
+//void String::alloc(unsigned n) {
+//	if (cap >= count + n) return;
+//
+//	while (cap < count + n) {
+//		if (!cap) cap = 1;
+//		else cap *= 2;
+//	}
+//
+//	char* tmp = new char[cap];
+//	for (int i = 0; i < count; i++) {
+//		*(tmp + i) = *(p + i);
+//	}
+//
+//	delete[] p;
+//	p = tmp;
+//}
 
 bool String::find(char* s, int size) const {
 	int j = 0;

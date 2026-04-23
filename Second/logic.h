@@ -1,4 +1,5 @@
 #pragma once
-#include"block.h"
 
-void readfile();
+#include"SortedList.h"
+
+void readfile(sorted_list, sorted_list, sorted_list);
