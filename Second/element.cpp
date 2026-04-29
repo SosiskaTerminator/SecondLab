@@ -11,7 +11,7 @@ element::element(int a, int b) {
 }
 
 int element::operator==(const element& other) {
-	if (position == other.position && line == other.line) return 0;
+	if (position == other.position) return 0;
 	if (position > other.position) return 1;
 	else return -1;
 }

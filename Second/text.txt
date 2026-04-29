@@ -1,9 +1,8 @@
-This is a normal line.
-     This sentence starts with five spaces and continues
+     This is a normal line.
+This sentence starts with five spaces and continues
 onto the next line without ending yet.
 Here is another normal line.
      Another sentence starts here
 and finishes here.
 Short line.
      One more sentence with indentation.
-And the last line.

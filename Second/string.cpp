@@ -7,19 +7,12 @@ String::String() {
 	//p = new char[1];
 }
 
-//String::~String() {
-//	if (p != nullptr) delete[] p;
-//	p = nullptr;
-//	cap = 0;
-//	count = 0;
-//}
-
 std::ostream& operator<<(std::ostream& os, const String& p) {
 	os << "String{массив: #";
 	for (int i = 0; i < p.count; i++) {
 		os << p.p[i];
 	}
-	os << "#, кол-во элементов: " << p.count << "}";
+	os << "#, кол-во элементов: " << p.count << ", номер строки: " << p.line << "}";
 	return os;
 }
 
@@ -33,23 +26,12 @@ bool String::operator==(const String& other) {
 	else return false;
 }
 
-//void String::setcap(int n) {
-//	if (n < 0) { cap = 0; std::cout << "Значение меньше нуля. Объем выставлен 0." << std::endl; }
-//	if (n > length_of_string) { cap = length_of_string; std::cout << "Значение больше разрешённого. Объем выставлен максимально разрешённым." << std::endl; }
-//	else cap = n;
-//}
-
 unsigned short String::getcount() const {
 	return count;
 }
 
-//unsigned short String::getcap() const {
-//	return cap;
-//}
-
 int String::push_back(char c) {
 	if (count >= length_of_string) return -1;
-	//alloc(1);
 	p[count] = c;
 	count++;
 
@@ -61,23 +43,6 @@ char String::getchar(unsigned n) const {
 	else if (count != 0) { std::cout << "Выход за границы." << std::endl; return '\0'; }
 	else { std::cout << "Массив не инициализирован" << std::endl; return '\0'; }
 }
-
-//void String::alloc(unsigned n) {
-//	if (cap >= count + n) return;
-//
-//	while (cap < count + n) {
-//		if (!cap) cap = 1;
-//		else cap *= 2;
-//	}
-//
-//	char* tmp = new char[cap];
-//	for (int i = 0; i < count; i++) {
-//		*(tmp + i) = *(p + i);
-//	}
-//
-//	delete[] p;
-//	p = tmp;
-//}
 
 bool String::find(char* s, int size) const {
 	int j = 0;
@@ -95,4 +60,20 @@ bool String::find(char* s, int size) const {
 
 void String::clear() {
 	count = 0;
+}
+
+void String::setline(int n) {
+	line = n;
+}
+
+int String::getline() {
+	return line;
+}
+
+void String::setstart(unsigned n) {
+	start = n;
+}
+
+unsigned String::getstart() {
+	return start;
 }

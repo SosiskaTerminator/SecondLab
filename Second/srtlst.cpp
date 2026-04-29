@@ -3,6 +3,12 @@
 
 using namespace std;
 
+sorted_list::~sorted_list() {
+	delete[] pA;
+	cap = 0;
+	count = 0;
+}
+
 void sorted_list::clear() {
 	if (pA != nullptr) delete[] pA;
 	pA = nullptr;

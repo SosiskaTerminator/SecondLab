@@ -7,17 +7,18 @@ class String
 {
 private:
 	char p[length_of_string];
-	//unsigned short cap = length_of_string;
 	unsigned short count = 0;
-	//void alloc(unsigned);
+	int line = 0;
+	unsigned start = 0;
 public:
 	String();
-	//~String();
 	friend std::ostream& operator<<(std::ostream& os, const String& p);
 	bool operator==(const String& other);
-	//void setcap(int);
+	void setline(int);
+	int getline();
+	void setstart(unsigned);
+	unsigned getstart();
 	unsigned short getcount() const;
-	//unsigned short getcap() const;
 	char getchar(unsigned) const;
 	int push_back(char);
 	bool find(char*, int) const;

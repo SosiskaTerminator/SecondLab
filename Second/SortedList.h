@@ -8,6 +8,7 @@ struct sorted_list
 	size_t cap = 0;
 	size_t count = 0;
 
+	~sorted_list();
 	void clear();
 	void insert(element);
 	element& operator[](const unsigned) const;

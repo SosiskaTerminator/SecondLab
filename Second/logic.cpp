@@ -16,7 +16,22 @@ void skip_to_n(fstream* file) {
 	}
 }
 
-void readfile(sorted_list& spaces, sorted_list& starts, sorted_list& ends) {
+void parsing(Block bl, sorted_list(&lists)[3]) {
+	for (int i = 0; i < bl.getcount(); i++) {
+		String tmp = bl.getstring(i);
+		element el(tmp.getstart(), tmp.getline());
+
+		for (int j = 0; j < tmp.getcount(); j++) {
+			if (tmp.getchar(j) == ' ') lists[0].insert(el);
+			if (is_end(tmp.getchar(j))) lists[1].insert(el);
+			if (is_cap(tmp.getchar(j))) lists[2].insert(el);
+
+			el.position++;
+		}
+	}
+}
+
+void readfile(sorted_list (&lists)[3]) {
 	fstream file("text.txt", ios::in);
 	if (!file.is_open()) { std::cout << "Ошибка отрытия файла." << endl; return; }
 	file.unsetf(std::ios::skipws);
@@ -48,9 +63,11 @@ void readfile(sorted_list& spaces, sorted_list& starts, sorted_list& ends) {
 				}
 			}
 			file >> tmp;
+			s.setstart(arr[i - 1] + length_of_string * номер_итерации);
 			while (tmp != '\n' && s.push_back(tmp) != -1 && !file.eof()) {
 				file >> tmp;
 			}
+			s.setline(i + size_of_block * номер_блочного_считывания);
 			if (file.eof()) {
 				file.clear();
 				eof = file.tellg();
@@ -62,12 +79,13 @@ void readfile(sorted_list& spaces, sorted_list& starts, sorted_list& ends) {
 		} while (flag != -1);
 		if (!bl.getcount()) goto выход;
 		file.clear();
-		std::cout << bl << endl;
+		cout << bl << endl;
+		parsing(bl, lists);
 		for (int j = 0; j < i; j++) {
 			if (arr[j] == -1) break;
-			std::cout << arr[j] + length_of_string * номер_итерации << ' ';
+			cout << arr[j] + length_of_string * номер_итерации << ' ';
 		}
-		std::cout << "\n===================================================================" << endl;
+		cout << "\n===================================================================" << endl;
 
 		flag = 0; i = 0; номер_итерации++;
 		bl.clear();
@@ -78,5 +96,51 @@ void readfile(sorted_list& spaces, sorted_list& starts, sorted_list& ends) {
 		flag = 0; i = 0; номер_итерации = 0;
 		bl.clear();
 		номер_блочного_считывания++;
+	}
+}
+
+void getlines(sorted_list(&lists)[3]) {
+	int start_line = 0, end_line = 0, pos = 0;
+	unsigned i_space = 0, i_end = 0, i_start = 0;
+	bool flag = true;
+
+	while (flag) {
+		int count = 1;
+		flag = true;
+
+		while (count != 5) {
+			if (i_space + 1 == lists[0].count) { flag = false; break; }
+			if (lists[0][i_space].line <= i_end) { i_space++; continue; }
+
+			if (lists[0][i_space].position + 1 == lists[0][i_space + 1].position) {
+				if (count == 1) pos = lists[0][i_space].position;
+				count++;
+			}
+			else {
+				count = 1;
+			}
+
+			i_space++;
+		}
+
+		if (count == 5) {
+			while (i_start != lists[2].count) {
+				if (lists[2][i_start].position == pos + 5) { start_line = lists[2][i_start++].line; break; }
+				i_start++;
+				if (i_start == lists[2].count) flag = false;
+			}
+
+			while (i_end != lists[1].count && flag) {
+				if (lists[1][i_end].position > pos) { end_line = lists[1][i_end++].line; break; }
+				i_end++;
+				if (i_end == lists[1].count) flag = false;
+			}
+
+			if (flag) {
+				for (int i = start_line; i <= end_line; i++) {
+					cout << i << ' ';
+				}
+			}
+		}
 	}
 }
