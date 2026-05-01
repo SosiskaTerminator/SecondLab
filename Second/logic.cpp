@@ -62,25 +62,37 @@ void readfile(sorted_list (&lists)[3]) {
 					file.seekg(arr[i++] + length_of_string * номер_итерации, file.beg);
 				}
 			}
+			//у строки после пустой номер смещён на -1
 			file >> tmp;
-			s.setstart(arr[i - 1] + length_of_string * номер_итерации);
-			while (tmp != '\n' && s.push_back(tmp) != -1 && !file.eof()) {
-				file >> tmp;
+			if (tmp != '\n') {
+				s.setstart(arr[i - 1] + length_of_string * номер_итерации);
+				while (tmp != '\n' && s.push_back(tmp) != -1 && !file.eof()) {
+					file >> tmp;
+				}
+				s.setline(i + size_of_block * номер_блочного_считывания);
+				flag = bl.push_back(s);
+				s.clear();
 			}
-			s.setline(i + size_of_block * номер_блочного_считывания);
+
 			if (file.eof()) {
 				file.clear();
 				eof = file.tellg();
 				break;
 			}
-			flag = bl.push_back(s);
-			s.clear();
-			if (!номер_итерации) { skip_to_n(&file); if (i >= size_of_block) { if (file.eof()) file.clear(); next_block = file.tellg(); } }
+
+			/*flag = bl.push_back(s);
+			s.clear();*/
+
+			if (!номер_итерации) { if (tmp != '\n') skip_to_n(&file); if (i >= size_of_block) { if (file.eof()) file.clear(); next_block = file.tellg(); } }
 		} while (flag != -1);
+
 		if (!bl.getcount()) goto выход;
 		file.clear();
+
 		cout << bl << endl;
+
 		parsing(bl, lists);
+
 		for (int j = 0; j < i; j++) {
 			if (arr[j] == -1) break;
 			cout << arr[j] + length_of_string * номер_итерации << ' ';
