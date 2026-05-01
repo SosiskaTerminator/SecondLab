@@ -1,5 +1,6 @@
 #pragma once
-#include"block.h"
-#include"Result.h"
 
-Result readfile();
+#include"SortedList.h"
+
+void readfile(sorted_list (&lists)[3]);
+void getlines(sorted_list(&lists)[3]);

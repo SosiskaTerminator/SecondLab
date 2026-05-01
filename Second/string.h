@@ -1,28 +1,27 @@
 #ifndef String_H
 #define String_H
 #include<iostream>
+#include"constants.h"
 
 class String
 {
 private:
-	char* p;
-	unsigned short cap;
+	char p[length_of_string];
 	unsigned short count = 0;
-	unsigned старт[3];
-	void alloc(unsigned);
+	int line = 0;
+	unsigned start = 0;
 public:
 	String();
-	String(int);
-	~String();
 	friend std::ostream& operator<<(std::ostream& os, const String& p);
-	String& operator=(const String& other);
-	void setcap(int);
+	bool operator==(const String& other);
+	void setline(int);
+	int getline();
+	void setstart(unsigned);
+	unsigned getstart();
 	unsigned short getcount() const;
-	unsigned short getcap() const;
-	int push_back(char);
 	char getchar(unsigned) const;
+	int push_back(char);
+	bool find(char*, int) const;
 	void clear();
-	void setстарт(unsigned, unsigned, unsigned);
-	unsigned getстарт(int) const;
 };
 #endif

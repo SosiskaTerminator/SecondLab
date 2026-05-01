@@ -15,19 +15,25 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="string.h">
+    <ClInclude Include="String.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="logic.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="block.h">
+    <ClInclude Include="Block.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="constants.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Result.h">
+    <ClInclude Include="checkers.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SortedList.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Element.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
@@ -44,7 +50,13 @@
     <ClCompile Include="logic.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="result.cpp">
+    <ClCompile Include="checkers.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="srtlst.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="element.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

@@ -123,17 +123,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="block.h" />
+    <ClInclude Include="Block.h" />
+    <ClInclude Include="checkers.h" />
     <ClInclude Include="constants.h" />
+    <ClInclude Include="Element.h" />
     <ClInclude Include="logic.h" />
-    <ClInclude Include="Result.h" />
-    <ClInclude Include="string.h" />
+    <ClInclude Include="SortedList.h" />
+    <ClInclude Include="String.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="block.cpp" />
+    <ClCompile Include="checkers.cpp" />
+    <ClCompile Include="element.cpp" />
     <ClCompile Include="logic.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="result.cpp" />
+    <ClCompile Include="srtlst.cpp" />
     <ClCompile Include="string.cpp" />
   </ItemGroup>
   <ItemGroup>
