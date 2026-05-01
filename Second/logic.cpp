@@ -62,7 +62,6 @@ void readfile(sorted_list (&lists)[3]) {
 					file.seekg(arr[i++] + length_of_string * номер_итерации, file.beg);
 				}
 			}
-			//у строки после пустой номер смещён на -1
 			file >> tmp;
 			if (tmp != '\n') {
 				s.setstart(arr[i - 1] + length_of_string * номер_итерации);
@@ -95,7 +94,7 @@ void readfile(sorted_list (&lists)[3]) {
 
 		for (int j = 0; j < i; j++) {
 			if (arr[j] == -1) break;
-			cout << arr[j] + length_of_string * номер_итерации << ' ';
+			std::cout << arr[j] + length_of_string * номер_итерации << ' ';
 		}
 		cout << "\n===================================================================" << endl;
 
